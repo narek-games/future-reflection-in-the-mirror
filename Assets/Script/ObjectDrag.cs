@@ -1,17 +1,17 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 
 public class ObjectDrag : MonoBehaviour
 {
     public void OnMouseDrag()
     {
-        // ƒ}ƒEƒXƒJ[ƒ\ƒ‹‹y‚ÑƒIƒuƒWƒFƒNƒg‚ÌƒXƒNƒŠ[ƒ“À•W‚ğæ“¾
+        // ãƒã‚¦ã‚¹ã‚«ãƒ¼ã‚½ãƒ«åŠã³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã‚’å–å¾—
         Vector3 objectScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
 
-        // ƒXƒNƒŠ[ƒ“À•W‚ğƒ[ƒ‹ƒhÀ•W‚É•ÏŠ·
+        // ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã‚’ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã«å¤‰æ›
         Vector3 objectworldPoint = Camera.main.ScreenToWorldPoint(objectScreenPoint);
 
-        // ƒIƒuƒWƒFƒNƒg‚ÌÀ•W‚ğ•ÏX‚·‚é
+        // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®åº§æ¨™ã‚’å¤‰æ›´ã™ã‚‹
         transform.position = objectworldPoint;
     }
 }
