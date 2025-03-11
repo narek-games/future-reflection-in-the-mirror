@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -154,9 +154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flipObjects: []
-  flipVMirror: []
   player: {fileID: 4879521607191884903, guid: 0f40cfd377c751a40b6ee6a80d4a94ea, type: 3}
   mirrorState: 0
+  gameManager: {fileID: 4388492758351498151, guid: b09182bfa6bc7d3448e79fb59c91fc39, type: 3}
 --- !u!114 &-4808404861489935542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,13 +174,13 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
+        - m_Target: {fileID: 2830853485693621811}
+          m_TargetAssemblyTypeName: MirrorScript, Assembly-CSharp
+          m_MethodName: OnTotched
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 

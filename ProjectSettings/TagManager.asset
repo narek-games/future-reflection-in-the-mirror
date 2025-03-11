@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Objects
   - VMirror
+  - Button
   layers:
   - Default
   - TransparentFX
