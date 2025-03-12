@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem.XR.Haptics;
+using UnityEngine.UI;
 
 public class MirrorScript : MonoBehaviour
 {
@@ -85,11 +86,26 @@ public class MirrorScript : MonoBehaviour
             {
                 if(thisPos.x < otherPos.x)
                 {
+                    // 右から衝突した場合
                     other.transform.position = new Vector3(otherPos.x - (mirrorWidth + otherWidth), otherPos.y, otherPos.z);
                 }
                 else
                 {
+                    // 左から衝突した場合
                     other.transform.position = new Vector3(otherPos.x + (mirrorWidth + otherWidth), otherPos.y, otherPos.z);
+                }
+            }
+            else if (this.gameObject.CompareTag("HMirror"))
+            {
+                if(thisPos.y < otherPos.y)
+                {
+                    // 上から衝突した場合
+                    other.transform.position = new Vector3(otherPos.x, otherPos.y - (mirrorHeight + otherHeight), otherPos.z);
+                }
+                else
+                {
+                    // 下から衝突した場合
+                    other.transform.position = new Vector3(otherPos.x, otherPos.y + (mirrorHeight + otherHeight), otherPos.z);
                 }
             }
         }
