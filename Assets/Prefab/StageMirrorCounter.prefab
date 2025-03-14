@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8714489387245642553
+--- !u!1 &3649601333692951504
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,44 +8,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1715632107088262385}
-  - component: {fileID: 4388492758351498151}
+  - component: {fileID: 825820641268508959}
+  - component: {fileID: 8011498249466587368}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: StageMirrorCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1715632107088262385
+--- !u!4 &825820641268508959
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8714489387245642553}
+  m_GameObject: {fileID: 3649601333692951504}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.8796688, y: -1.0783277, z: -9.930296}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4388492758351498151
+--- !u!114 &8011498249466587368
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8714489387245642553}
+  m_GameObject: {fileID: 3649601333692951504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bd2416191f44c24ab0a41494e914f2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 30507850b078fb54fa8725f248e20f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageNum: 0
-  stageNumText: {fileID: 0}
-  phase: 0
-  flipObjects: []
-  player: {fileID: 4879521607191884903, guid: 0f40cfd377c751a40b6ee6a80d4a94ea, type: 3}
+  VMirrorCount: 0
+  HMirrorCount: 0
+  LDRUMirrorCount: 0
+  LURDMirrorCount: 0

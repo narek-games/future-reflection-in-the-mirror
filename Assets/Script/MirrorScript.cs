@@ -6,11 +6,6 @@ using UnityEngine.UI;
 
 public class MirrorScript : MonoBehaviour
 {
-    // オブジェクトをまとめる配列
-    public GameObject[] flipObjects;
-
-    // プレイヤーをいれる変数
-    public GameObject player;
     // 状態(0->未設置(灰色)、1->鏡)を示す変数
     public int mirrorState = 0;
 
@@ -48,26 +43,6 @@ public class MirrorScript : MonoBehaviour
             {
                 GameManager.worldState = 0;
             }
-
-            // "Objects"タグを持つオブジェクトを同じ配列に入れる
-            flipObjects = GameObject.FindGameObjectsWithTag("Objects");
-
-            // 配列から1つずつ順番に取り出し色相を反転
-            foreach(GameObject flipObj in flipObjects)
-            {
-                Color tmpColor = flipObj.GetComponent<SpriteRenderer>().color;
-                tmpColor.r = Mathf.Abs(tmpColor.r - 1.0f);
-                tmpColor.g = Mathf.Abs(tmpColor.g - 1.0f);
-                tmpColor.b = Mathf.Abs(tmpColor.b - 1.0f);
-                flipObj.GetComponent<SpriteRenderer>().color = tmpColor;
-            }
-
-            // プレイヤーの色相を反転
-            Color plaColor = player.GetComponent<SpriteRenderer>().color;
-            plaColor.r = Mathf.Abs(plaColor.r - 1.0f);
-            plaColor.g = Mathf.Abs(plaColor.g - 1.0f);
-            plaColor.b = Mathf.Abs(plaColor.b - 1.0f);
-            player.GetComponent<SpriteRenderer>().color = plaColor;
 
             // どの方向から衝突したかを検知
             // 衝突したオブジェクトの座標を取得

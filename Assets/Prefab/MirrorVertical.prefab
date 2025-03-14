@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -4478995070939776233}
   - component: {fileID: 2830853485693621811}
   - component: {fileID: -4808404861489935542}
+  - component: {fileID: 8864026618403174657}
   m_Layer: 0
   m_Name: MirrorVertical
   m_TagString: VMirror
@@ -153,8 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790a9cef5afd33747b7fd4eaa46e0747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipObjects: []
-  player: {fileID: 4879521607191884903, guid: 0f40cfd377c751a40b6ee6a80d4a94ea, type: 3}
   mirrorState: 0
   gameManager: {fileID: 4388492758351498151, guid: b09182bfa6bc7d3448e79fb59c91fc39, type: 3}
 --- !u!114 &-4808404861489935542
@@ -186,3 +185,16 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &8864026618403174657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465304107832999412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a8c87f1392b9f4698323db4485e3a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 4388492758351498151, guid: b09182bfa6bc7d3448e79fb59c91fc39, type: 3}

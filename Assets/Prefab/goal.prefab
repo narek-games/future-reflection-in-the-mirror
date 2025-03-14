@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 35980567268785697}
   - component: {fileID: 3515130066382601560}
   - component: {fileID: 2028796857912713261}
+  - component: {fileID: -4529524416778200586}
   m_Layer: 0
   m_Name: goal
   m_TagString: Objects
@@ -152,3 +153,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenenNum: 0
+--- !u!114 &-4529524416778200586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3144279804107786404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a8c87f1392b9f4698323db4485e3a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 4388492758351498151, guid: b09182bfa6bc7d3448e79fb59c91fc39, type: 3}

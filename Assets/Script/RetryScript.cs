@@ -7,10 +7,6 @@ using UnityEngine.UI;
 
 public class RetryScript : MonoBehaviour
 {
-    /*
-        ボタン背景の反転が今の記述の仕方では未完
-     */
-
     // ボタン背景の初期色を保存する変数
     Color firstColor;
     // ボタン背景の初期色の補色を保存する変数
@@ -28,7 +24,7 @@ public class RetryScript : MonoBehaviour
         stageStartWorld = GameManager.worldState;
 
         // ボタン背景の初期色を取得
-        firstColor = this.GetComponent<Button>().colors.normalColor;
+        firstColor = this.GetComponent<Image>().color;
         // ボタン背景の初期色の補色を取得
         complementaryColor = new Color(Mathf.Abs(firstColor.r - 1.0f), Mathf.Abs(firstColor.g - 1.0f), Mathf.Abs(firstColor.b - 1.0f));
 
@@ -48,10 +44,12 @@ public class RetryScript : MonoBehaviour
     {
         if (GameManager.worldState == 0)
         {
+            this.GetComponent<Image>().color = firstColor;
             this.GetComponentInChildren<TextMeshProUGUI>().color = firstTextColor;
         }
         else if (GameManager.worldState == 1)
         {
+            this.GetComponent<Image>().color = complementaryColor;
             this.GetComponentInChildren<TextMeshProUGUI>().color = complementaryTextColor;
         }
     }

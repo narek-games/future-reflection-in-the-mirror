@@ -20,11 +20,6 @@ public class GameManager : MonoBehaviour
     // 現在のフェーズが鏡設置フェーズ->0か、移動フェーズ->1かを判断するための変数
     public int phase = 0;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         string sceneName = SceneManager.GetActiveScene().name;

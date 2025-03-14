@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2783537232069405433}
   - component: {fileID: 2063584340338944377}
   - component: {fileID: 8342399779212851911}
+  - component: {fileID: 3800140831227394243}
   m_Layer: 0
   m_Name: HorizonWall
   m_TagString: Objects
@@ -139,3 +140,16 @@ PolygonCollider2D:
       - {x: 0.5, y: -0.5}
       - {x: 0.5, y: 0.5}
   m_UseDelaunayMesh: 0
+--- !u!114 &3800140831227394243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2363141676537958890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a8c87f1392b9f4698323db4485e3a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 4388492758351498151, guid: b09182bfa6bc7d3448e79fb59c91fc39, type: 3}

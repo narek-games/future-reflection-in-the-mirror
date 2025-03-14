@@ -4,8 +4,29 @@ public class PlayerScript : MonoBehaviour
 {
     public GameManager gameManager;
 
+    // プレイヤーの初期色を保存する変数
+    Color plaFirstColor;
+
+    // プレイヤーの初期色の補色を保存する変数
+    Color plaCompColor;
+
+    private void Start()
+    {
+        plaFirstColor = this.GetComponent<SpriteRenderer>().color;
+        plaCompColor = new Color(Mathf.Abs(plaFirstColor.r - 1.0f), Mathf.Abs(plaFirstColor.g - 1.0f), Mathf.Abs(plaFirstColor.b - 1.0f));
+    }
+
     void Update()
     {
+        if(GameManager.worldState == 0)
+        {
+            this.GetComponent<SpriteRenderer>().color = plaFirstColor;
+        }
+        else if(GameManager.worldState == 1)
+        {
+            this.GetComponent<SpriteRenderer>().color = plaCompColor;
+        }
+
         if(gameManager.phase == 1)
         {
             // 左に移動
