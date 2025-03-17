@@ -9,22 +9,81 @@ public class MirrorScript : MonoBehaviour
     // 状態(0->未設置(灰色)、1->鏡)を示す変数
     public int mirrorState = 0;
 
-    // GameManager上の変数を取得するために
+    // 他オブジェクト上の変数を取得するために
     public GameManager gameManager;
+
+    // 自身のタグを保存する変数
+    string thisTag;
+
+    // 自身に対応するタグを保存する変数
+    string thisCounterTag;
+
+    // 反転生成用のプレハブを取得
+    GameObject PreVWall;
+    GameObject PreHWall;
+
+    // 反転生成されたオブジェクトを格納するList
+    List<GameObject> generatedWalls = new List<GameObject>();
+
+    private void Start()
+    {
+        // 自身のタグから対応するカウンターの向きを取得
+        thisTag = this.gameObject.tag;
+
+        if (thisTag.Equals("VMirror"))
+        {
+            thisCounterTag = "VMCounter";
+        }
+        else if (thisTag.Equals("HMirror"))
+        {
+            thisCounterTag = "HMCounter";
+        }
+        else if (thisTag.Equals("LDRUMirror"))
+        {
+            thisCounterTag = "LDRUMCounter";
+        }
+        else if (thisTag.Equals("LURDMirror"))
+        {
+            thisCounterTag = "LURDMCounter";
+        }
+
+        PreVWall = (GameObject)Resources.Load("VerticalWall");
+        PreHWall = (GameObject)Resources.Load("HorizonWall");
+    }
 
     public void OnTotched()
     {
         if(gameManager.phase == 0)
         {
-            if (mirrorState == 0)
+            //鏡が未起動 && 対応するカウンターのmaxMirrorが1以上
+            if (mirrorState == 0 && GameObject.FindGameObjectWithTag(thisCounterTag).GetComponent<MirrorCounterScript>().maxMirror > 0)
             {
                 // 未起動->起動
                 mirrorState = 1;
+
+                // 自身の鏡の向きと対応するカウンターの数を変更
+                GameObject.FindGameObjectWithTag(thisCounterTag).GetComponent<MirrorCounterScript>().maxMirror--;
+
+                // 反転壁生成
+                GameObject genVW = Instantiate(PreVWall, new Vector3(-4.0f, 1.0f, 0.0f), Quaternion.identity);
+                // 生成した壁をリストへ追加
+                generatedWalls.Add(genVW);
             }
             else if (mirrorState == 1)
             {
                 // 起動->未起動
                 mirrorState = 0;
+
+                // 自身の鏡の向きと対応するカウンターの数を変更
+                GameObject.FindGameObjectWithTag(thisCounterTag).GetComponent<MirrorCounterScript>().maxMirror++;
+
+                // この鏡によって生成された反転壁を全て削除
+                for(int i = 0; i < generatedWalls.Count; i++)
+                {
+                    Destroy(generatedWalls[i]);
+                }
+                //リスト自体を綺麗にする
+                generatedWalls.Clear();
             }
         }
     }
@@ -93,7 +152,7 @@ public class MirrorScript : MonoBehaviour
         {
             if (mirrorState == 0)
             {
-                this.GetComponent<SpriteRenderer>().color = new Color32(128, 128, 128, 255);
+                this.GetComponent<SpriteRenderer>().color = new Color32(128, 128, 128, 128);
             }
             else if (mirrorState == 1)
             {
@@ -104,7 +163,7 @@ public class MirrorScript : MonoBehaviour
         {
             if (mirrorState == 0)
             {
-                this.GetComponent<SpriteRenderer>().color = new Color32(128, 128, 128, 255);
+                this.GetComponent<SpriteRenderer>().color = new Color32(128, 128, 128, 128);
             }
             else if (mirrorState == 1)
             {

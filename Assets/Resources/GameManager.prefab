@@ -45,7 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageNum: 0
-  stageNumText: {fileID: 0}
+  stageNumText: {fileID: 4303299614591675461, guid: 1d20c77daefdba144a3a403e890d7b78, type: 3}
   phase: 0
-  flipObjects: []
-  player: {fileID: 4879521607191884903, guid: 0f40cfd377c751a40b6ee6a80d4a94ea, type: 3}

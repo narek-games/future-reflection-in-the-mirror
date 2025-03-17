@@ -156,6 +156,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mirrorState: 0
   gameManager: {fileID: 4388492758351498151, guid: b09182bfa6bc7d3448e79fb59c91fc39, type: 3}
+  VMCounter: {fileID: 0}
+  HMCounter: {fileID: 0}
+  LDRUMCounter: {fileID: 0}
+  LURDMCounter: {fileID: 0}
 --- !u!114 &-4808404861489935542
 MonoBehaviour:
   m_ObjectHideFlags: 0
