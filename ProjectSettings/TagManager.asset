@@ -14,6 +14,9 @@ TagManager:
   - HMCounter
   - LDRUMCounter
   - LURDMCounter
+  - VWall
+  - HWall
+  - Wall
   layers:
   - Default
   - TransparentFX

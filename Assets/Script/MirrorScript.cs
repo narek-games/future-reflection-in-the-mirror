@@ -22,7 +22,9 @@ public class MirrorScript : MonoBehaviour
     GameObject PreVWall;
     GameObject PreHWall;
 
-    // 反転生成されたオブジェクトを格納するList
+    // 反転生成のもとになるオブジェクトを格納するリスト
+    List<GameObject> generateBaseWalls = new List<GameObject>();
+    // 反転生成されたオブジェクトを格納するリスト
     List<GameObject> generatedWalls = new List<GameObject>();
 
     private void Start()
@@ -65,9 +67,87 @@ public class MirrorScript : MonoBehaviour
                 GameObject.FindGameObjectWithTag(thisCounterTag).GetComponent<MirrorCounterScript>().maxMirror--;
 
                 // 反転壁生成
-                GameObject genVW = Instantiate(PreVWall, new Vector3(-4.0f, 1.0f, 0.0f), Quaternion.identity);
-                // 生成した壁をリストへ追加
-                generatedWalls.Add(genVW);
+                // Wallタグのついたオブジェクトをそれぞれ取得、全て対応する配列へ
+                GameObject[] allVWalls = GameObject.FindGameObjectsWithTag("VWall");
+                GameObject[] allHWalls = GameObject.FindGameObjectsWithTag("HWall");
+
+                // この鏡がVなら
+                if (this.gameObject.CompareTag("VMirror"))
+                {   
+                    foreach (GameObject VWObj in allVWalls)
+                    {
+                        // この鏡とy座標が等しいVWallを反転生成元リストに追加
+                        if (this.transform.position.y == VWObj.transform.position.y)
+                        {
+                            generateBaseWalls.Add(VWObj);
+                        }
+                    }
+
+                    foreach (GameObject HWObj in allHWalls)
+                    {
+                        // この鏡とHWallのy座標の差を計算
+                        float y_difference = this.transform.position.y - HWObj.transform.position.y;
+                        // y座標の座が+-1ならそのHWallを反転生成元リストに追加
+                        if(y_difference == 1 || y_difference == -1)
+                        {
+                            generateBaseWalls.Add(HWObj);
+                        }
+                    }
+
+                    // 反転生成元リストを1つずつ取り出し、それぞれ対称の座標を計算して生成、反転生成後リストに追加
+                    foreach (GameObject generateWall in generateBaseWalls)
+                    {
+                        // 反転生成するx座標を格納する変数
+                        float generate_x = 0;
+
+                        // 取り出したオブジェクトの座標を格納
+                        Vector3 basePos = generateWall.transform.position;
+
+                        // この鏡と取り出したオブジェクトのx座標の符号が同じなら
+                        if((this.transform.position.x >= 0 && basePos.x >= 0) || (this.transform.position.x < 0 && basePos.x < 0))
+                        {
+                            // 絶対値を用いてx座標の差を計算
+                            float thisBaseDif = Mathf.Abs(this.transform.position.x) - Mathf.Abs(basePos.x);
+                            // この鏡と取り出したオブジェクトの位置関係によって生成座標xを特定
+                            if(this.transform.position.x > basePos.x)
+                            {
+                                generate_x = this.transform.position.x + Mathf.Abs(thisBaseDif);
+                            }
+                            else
+                            {
+                                generate_x = this.transform.position.x - Mathf.Abs(thisBaseDif);
+                            }
+                        }
+                        else    // この鏡と取り出したオブジェクトのx座標の符号が異なるなら
+                        {
+                            // この鏡と取り出したオブジェクトの位置関係によって生成座標xを特定
+                            if (this.transform.position.x > basePos.x)
+                            {
+                                generate_x = this.transform.position.x + (this.transform.position.x - basePos.x);
+                            }
+                            else
+                            {
+                                generate_x = this.transform.position.x - (basePos.x - this.transform.position.x);
+                            }
+                        }
+
+                        // 向きに合わせて反転壁を生成し、反転生成後リストに追加
+                        if (generateWall.gameObject.CompareTag("VWall"))
+                        {
+                            GameObject genWall = Instantiate(PreVWall, new Vector3(generate_x, basePos.y, 0.0f), Quaternion.identity);
+                            generatedWalls.Add(genWall);
+                        }
+                        else if (generateWall.gameObject.CompareTag("HWall"))
+                        {
+                            GameObject genWall = Instantiate(PreHWall, new Vector3(generate_x, basePos.y, 0.0f), Quaternion.identity);
+                            generatedWalls.Add(genWall);
+                        }
+                    }
+
+                    // 生成元リストをクリア
+                    generateBaseWalls.Clear();
+
+                }
             }
             else if (mirrorState == 1)
             {
