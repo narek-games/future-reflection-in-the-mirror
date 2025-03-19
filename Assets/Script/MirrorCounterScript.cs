@@ -1,15 +1,15 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class MirrorCounterScript : MonoBehaviour
 {
     public StageMirrorCounter stageMirrorCounter;
 
-    // Ž©g‚ÌŒü‚«‚ð’u‚¯‚éãŒÀ‚ð•Û‘¶‚·‚é•Ï”
+    // è‡ªèº«ã®å‘ãã‚’ç½®ã‘ã‚‹ä¸Šé™ã‚’ä¿å­˜ã™ã‚‹å¤‰æ•°
     public int maxMirror;
 
     private void Start()
     {
-        // Ž©g‚ª‚Ç‚ÌŒü‚«‚ÌƒJƒEƒ“ƒ^[‚©‚ð”»’f‚µ‚ÄŽæ“¾‚·‚é
+        // è‡ªèº«ãŒã©ã®å‘ãã®ã‚«ã‚¦ãƒ³ã‚¿ãƒ¼ã‹ã‚’åˆ¤æ–­ã—ã¦å–å¾—ã™ã‚‹
         if (this.gameObject.CompareTag("VMCounter"))
         {
             maxMirror = stageMirrorCounter.VMirrorCount;
@@ -30,7 +30,7 @@ public class MirrorCounterScript : MonoBehaviour
 
     private void Update()
     {
-        // Ý’uãŒÀ‚É‚È‚Á‚Ä‚¢‚È‚¯‚ê‚Î…FA‚È‚Á‚Ä‚¢‚ê‚ÎŠDF
+        // è¨­ç½®ä¸Šé™ã«ãªã£ã¦ã„ãªã‘ã‚Œã°æ°´è‰²ã€ãªã£ã¦ã„ã‚Œã°ç°è‰²
         if(maxMirror > 0)
         {
             if(GameManager.worldState == 0)
