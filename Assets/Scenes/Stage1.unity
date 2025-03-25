@@ -2541,7 +2541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8011498249466587368, guid: 645560300b91d58429c2bf801f0bf35e, type: 3}
       propertyPath: VMirrorCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8011498249466587368, guid: 645560300b91d58429c2bf801f0bf35e, type: 3}
       propertyPath: LDRUMirrorCount
