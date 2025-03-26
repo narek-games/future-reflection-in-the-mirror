@@ -3,7 +3,31 @@ using UnityEngine.SceneManagement;
 
 public class GoalScript : MonoBehaviour
 {
+    SpriteRenderer goalSpriteRenderer;
+
+    // ゴールの画像2種類を格納する変数
+    public Sprite goal;
+    public Sprite goal_nega;
+
     public int scenenNum = 0;
+
+    private void Start()
+    {
+        goalSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        if(GameManager.worldState == 0)
+        {
+            goalSpriteRenderer.sprite = goal;
+        }
+        else if(GameManager.worldState == 1)
+        {
+            goalSpriteRenderer.sprite = goal_nega;
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         string stageName = "stage" + scenenNum;
