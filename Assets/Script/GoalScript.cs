@@ -9,7 +9,8 @@ public class GoalScript : MonoBehaviour
     public Sprite goal;
     public Sprite goal_nega;
 
-    public int scenenNum = 0;
+    // 次のステージを入れる
+    public int nextSceneNum = 0;
 
     private void Start()
     {
@@ -30,7 +31,7 @@ public class GoalScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        string stageName = "stage" + scenenNum;
+        string stageName = "stage" + nextSceneNum;
         // タグが"Player"のオブジェクトと衝突したとき
         if (other.CompareTag("Player"))
         {

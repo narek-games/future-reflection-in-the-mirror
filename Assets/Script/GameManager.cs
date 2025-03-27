@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // 現在のステージ数を検索するために必要な配列(ステージを作った数だけここに追加)(0は配列番号と合わせるため)
-    private int[] stageNumArray = new int[] { 0, 1, 2 };
+    private int[] stageNumArray = new int[] { 0, 1, 2, 3, 4 };
 
     // 現在のステージ数を入れる変数
     public int stageNum;

@@ -25,7 +25,7 @@ public class CounterTextScript : MonoBehaviour
         }
         else if (this.gameObject.tag.Equals("LURDMirror"))
         {
-            thisText.text = "×" + GameObject.FindGameObjectWithTag("LDRUMCounter").GetComponent<MirrorCounterScript>().maxMirror;
+            thisText.text = "×" + GameObject.FindGameObjectWithTag("LURDMCounter").GetComponent<MirrorCounterScript>().maxMirror;
         }
     }
 }
