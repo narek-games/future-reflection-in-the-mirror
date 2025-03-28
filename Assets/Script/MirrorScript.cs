@@ -328,92 +328,116 @@ public class MirrorScript : MonoBehaviour
                             GameObject genWall = Instantiate(PreVWall, new Vector3(generate_x, generate_y, 0.0f), Quaternion.identity);
                             generatedWalls.Add(genWall);
                         }
+                    }
 
-                        /*
-                        // プレイヤーが進めなくなる壁を除去
-                        int thisXPos = (int)this.transform.position.x;
-                        int thisYPos = (int)this.transform.position.y;
-                        // 鏡から見て(+1,0)に生成されたとき
-                        if(generate_x == thisXPos + 1 && generate_y == thisYPos)
+                    // 生成元リストをクリア
+                    generateBaseWalls.Clear();
+
+                }
+                else if (this.gameObject.CompareTag("LURDMirror"))    // この鏡がLURDなら
+                {
+                    foreach (GameObject HWObj in allHWalls)
+                    {
+                        // この鏡とHWallのy座標の差を計算
+                        int y_difference = (int)this.transform.position.y - (int)HWObj.transform.position.y;
+                        // この鏡とx座標が等しいか、y座標の差が+-1のHWallを反転生成元リストに追加
+                        if ((int)this.transform.position.x == (int)HWObj.transform.position.x || y_difference == 1 || y_difference == -1)
                         {
-                            // (+1,0)に生成された壁を探索し削除
-                            for(int i = 0; i < generatedWalls.Count; i++)
-                            {
-                                if (generatedWalls[i].transform.position.x == thisXPos + 1 && generatedWalls[i].transform.position.y == thisYPos)
-                                {
-                                    Destroy(generatedWalls[i]);
-                                }
-                            }
+                            generateBaseWalls.Add(HWObj);
+                        }
+                    }
 
-                            // (0,-1)にもとからある壁(HWall)を探索し削除
-                            foreach (GameObject HWObj in allHWalls)
+                    foreach (GameObject VWObj in allVWalls)
+                    {
+                        // この鏡とVWallのx座標の差を計算
+                        int x_difference = (int)this.transform.position.x - (int)VWObj.transform.position.x;
+                        // この鏡とy座標が等しいか、x座標の差が+-1のVWallを反転生成元リストに追加
+                        if ((int)this.transform.position.y == (int)VWObj.transform.position.y || x_difference == 1 || x_difference == -1)
+                        {
+                            generateBaseWalls.Add(VWObj);
+                        }
+                    }
+
+                    //↑ここまで(生成元の抽出)完了
+
+                    // 反転生成元リストを1つずつ取り出し、それぞれ対称の座標を計算して生成、反転生成後リストに追加
+                    foreach (GameObject generateWall in generateBaseWalls)
+                    {
+                        // 反転生成するx座標を格納する変数
+                        float generate_x = 0;
+                        // 反転生成するy座標を格納する変数
+                        float generate_y = 0;
+
+                        // 取り出したオブジェクトの座標を格納
+                        Vector3 basePos = generateWall.transform.position;
+
+                        // この鏡と取り出したオブジェクトのx座標の符号が同じなら
+                        if ((this.transform.position.x >= 0 && basePos.x >= 0) || (this.transform.position.x < 0 && basePos.x < 0))
+                        {
+                            // 絶対値を用いてx座標の差を計算
+                            float thisBaseDif = Mathf.Abs(this.transform.position.x) - Mathf.Abs(basePos.x);
+                            // この鏡と取り出したオブジェクトの位置関係によって生成座標"y"を特定
+                            if (this.transform.position.x > basePos.x)
                             {
-                                if(HWObj.transform.position.x == thisXPos && HWObj.transform.position.y == thisYPos - 1)
-                                {
-                                    Destroy(HWObj);
-                                }
+                                generate_y = this.transform.position.y + Mathf.Abs(thisBaseDif);
+                            }
+                            else
+                            {
+                                generate_y = this.transform.position.y - Mathf.Abs(thisBaseDif);
                             }
                         }
-                        else if(generate_x == thisXPos - 1 && generate_y == thisYPos)    // 鏡から見て(-1,0)に生成されたとき
+                        else    // この鏡と取り出したオブジェクトのx座標の符号が異なるなら
                         {
-                            // (-1,0)に生成された壁を探索し削除
-                            for (int i = 0; i < generatedWalls.Count; i++)
+                            // この鏡と取り出したオブジェクトの位置関係によって生成座標"y"を特定
+                            if (this.transform.position.x > basePos.x)
                             {
-                                if (generatedWalls[i].transform.position.x == thisXPos - 1 && generatedWalls[i].transform.position.y == thisYPos)
-                                {
-                                    Destroy(generatedWalls[i]);
-                                }
+                                generate_y = this.transform.position.y + (this.transform.position.x - basePos.x);
                             }
-
-                            // (0,+1)にもとからある壁(HWall)を探索し削除
-                            foreach (GameObject HWObj in allHWalls)
+                            else
                             {
-                                if (HWObj.transform.position.x == thisXPos && HWObj.transform.position.y == thisYPos + 1)
-                                {
-                                    Destroy(HWObj);
-                                }
+                                generate_y = this.transform.position.y - (basePos.x - this.transform.position.x);
                             }
                         }
-                        else if (generate_x == thisXPos && generate_y == thisYPos + 1)    // 鏡から見て(0,+1)に生成されたとき
-                        {
-                            // (0,+1)に生成された壁を探索し削除
-                            for (int i = 0; i < generatedWalls.Count; i++)
-                            {
-                                if (generatedWalls[i].transform.position.x == thisXPos && generatedWalls[i].transform.position.y == thisYPos + 1)
-                                {
-                                    Destroy(generatedWalls[i]);
-                                }
-                            }
 
-                            // (+1,0)にもとからある壁(VWall)を探索し削除
-                            foreach (GameObject VWObj in allVWalls)
+                        // この鏡と取り出したオブジェクトのy座標の符号が同じなら
+                        if ((this.transform.position.y >= 0 && basePos.y >= 0) || (this.transform.position.y < 0 && basePos.y < 0))
+                        {
+                            // 絶対値を用いてy座標の差を計算
+                            float thisBaseDif = Mathf.Abs(this.transform.position.y) - Mathf.Abs(basePos.y);
+                            // この鏡と取り出したオブジェクトの位置関係によって生成座標"x"を特定
+                            if (this.transform.position.y > basePos.y)
                             {
-                                if (VWObj.transform.position.x == thisXPos + 1 && VWObj.transform.position.y == thisYPos)
-                                {
-                                    Destroy(VWObj);
-                                }
+                                generate_x = this.transform.position.x + Mathf.Abs(thisBaseDif);
+                            }
+                            else
+                            {
+                                generate_x = this.transform.position.x - Mathf.Abs(thisBaseDif);
                             }
                         }
-                        else if (generate_x == thisXPos && generate_y == thisYPos - 1)    // 鏡から見て(0,-1)に生成されたとき
+                        else    // この鏡と取り出したオブジェクトのy座標の符号が異なるなら
                         {
-                            // (0,-1)に生成された壁を探索し削除
-                            for (int i = 0; i < generatedWalls.Count; i++)
+                            // この鏡と取り出したオブジェクトの位置関係によって生成座標"x"を特定
+                            if (this.transform.position.y > basePos.y)
                             {
-                                if (generatedWalls[i].transform.position.x == thisXPos && generatedWalls[i].transform.position.y == thisYPos - 1)
-                                {
-                                    Destroy(generatedWalls[i]);
-                                }
+                                generate_x = this.transform.position.x + (this.transform.position.y - basePos.y);
                             }
+                            else
+                            {
+                                generate_x = this.transform.position.x - (basePos.y - this.transform.position.y);
+                            }
+                        }
 
-                            // (-1,0)にもとからある壁(VWall)を探索し削除
-                            foreach (GameObject VWObj in allVWalls)
-                            {
-                                if (VWObj.transform.position.x == thisXPos - 1 && VWObj.transform.position.y == thisYPos)
-                                {
-                                    Destroy(VWObj);
-                                }
-                            }
-                        }*/
+                        // 向きに合わせて反転壁を生成し、反転生成後リストに追加
+                        if (generateWall.gameObject.CompareTag("VWall"))
+                        {
+                            GameObject genWall = Instantiate(PreHWall, new Vector3(generate_x, generate_y, 0.0f), Quaternion.identity);
+                            generatedWalls.Add(genWall);
+                        }
+                        else if (generateWall.gameObject.CompareTag("HWall"))
+                        {
+                            GameObject genWall = Instantiate(PreVWall, new Vector3(generate_x, generate_y, 0.0f), Quaternion.identity);
+                            generatedWalls.Add(genWall);
+                        }
                     }
 
                     // 生成元リストをクリア
@@ -446,20 +470,11 @@ public class MirrorScript : MonoBehaviour
         // タグが"Player"のオブジェクトと衝突したとき
         if (other.gameObject.CompareTag("Player") && mirrorState == 1)
         {
-            // 世界の反転
-            if (GameManager.worldState == 0)
-            {
-                GameManager.worldState = 1;
-            }
-            else if (GameManager.worldState == 1)
-            {
-                GameManager.worldState = 0;
-            }
-
+            
             // どの方向から衝突したかを検知
             // 衝突したオブジェクトの座標を取得
             Vector3 otherPos = other.transform.position;
-            // 自身の座標を取得
+            // 鏡自身の座標を取得
             Vector3 thisPos = this.transform.position;
             // 鏡自身のサイズを取得
             float mirrorWidth = this.GetComponent<SpriteRenderer>().bounds.size.x;
@@ -471,28 +486,92 @@ public class MirrorScript : MonoBehaviour
             // 鏡の向きによって処理を変化
             if(this.gameObject.CompareTag("VMirror"))
             {
-                if(thisPos.x < otherPos.x)
+                // 縦向きの鏡に上下から触れてしまうのを防ぐ
+                if(!(thisPos.y + 1 < otherPos.y) && !(thisPos.y - 1 > otherPos.y))
                 {
-                    // 右から衝突した場合
-                    other.transform.position = new Vector3(otherPos.x - (mirrorWidth + otherWidth), otherPos.y, otherPos.z);
+                    if (thisPos.x < otherPos.x)
+                    {
+                        // 右から衝突した場合
+                        other.transform.position = new Vector3(otherPos.x - (mirrorWidth + otherWidth), otherPos.y, otherPos.z);
+                    }
+                    else
+                    {
+                        // 左から衝突した場合
+                        other.transform.position = new Vector3(otherPos.x + (mirrorWidth + otherWidth), otherPos.y, otherPos.z);
+                    }
+
+                    // 世界の反転
+                    if (GameManager.worldState == 0)
+                    {
+                        GameManager.worldState = 1;
+                    }
+                    else if (GameManager.worldState == 1)
+                    {
+                        GameManager.worldState = 0;
+                    }
                 }
-                else
-                {
-                    // 左から衝突した場合
-                    other.transform.position = new Vector3(otherPos.x + (mirrorWidth + otherWidth), otherPos.y, otherPos.z);
-                }
+                
             }
             else if (this.gameObject.CompareTag("HMirror"))
             {
-                if(thisPos.y < otherPos.y)
+                // 横向きの鏡に左右から触れてしまうのを防ぐ
+                if(!(thisPos.x + 1 < otherPos.x) && !(thisPos.x - 1 > otherPos.x))
                 {
-                    // 上から衝突した場合
-                    other.transform.position = new Vector3(otherPos.x, otherPos.y - (mirrorHeight + otherHeight), otherPos.z);
+                    if (thisPos.y < otherPos.y)
+                    {
+                        // 上から衝突した場合
+                        other.transform.position = new Vector3(otherPos.x, otherPos.y - (mirrorHeight + otherHeight), otherPos.z);
+                    }
+                    else
+                    {
+                        // 下から衝突した場合
+                        other.transform.position = new Vector3(otherPos.x, otherPos.y + (mirrorHeight + otherHeight), otherPos.z);
+                    }
+
+                    // 世界の反転
+                    if (GameManager.worldState == 0)
+                    {
+                        GameManager.worldState = 1;
+                    }
+                    else if (GameManager.worldState == 1)
+                    {
+                        GameManager.worldState = 0;
+                    }
+                }
+            }
+            else if (this.gameObject.CompareTag("LDRUMirror"))
+            {
+                if(((thisPos.x > otherPos.x) && (thisPos.y > otherPos.y)) || ((thisPos.x <= otherPos.x) && (thisPos.y <= otherPos.y)))
+                {
+                    // 右下から衝突した場合
+                    other.transform.position = new Vector3(thisPos.x - 0.1f, thisPos.y + 0.1f);
                 }
                 else
                 {
-                    // 下から衝突した場合
-                    other.transform.position = new Vector3(otherPos.x, otherPos.y + (mirrorHeight + otherHeight), otherPos.z);
+                    // 左上から衝突した場合
+                    other.transform.position = new Vector3(otherPos.x + (mirrorWidth + otherWidth), otherPos.y - (mirrorHeight + otherHeight), otherPos.z);
+                }
+
+                // 世界の反転
+                if (GameManager.worldState == 0)
+                {
+                    GameManager.worldState = 1;
+                }
+                else if (GameManager.worldState == 1)
+                {
+                    GameManager.worldState = 0;
+                }
+            }
+            else if (this.gameObject.CompareTag("LURDMirror"))
+            {
+                // 世界の反転
+                if (GameManager.worldState == 0)
+                {
+                    GameManager.worldState = 1;
+                }
+                else if (GameManager.worldState == 1)
+                {
+                    GameManager.worldState = 0;
                 }
             }
         }

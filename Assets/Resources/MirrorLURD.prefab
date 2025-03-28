@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mirrorState: 0
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 4388492758351498151, guid: b09182bfa6bc7d3448e79fb59c91fc39, type: 3}
 --- !u!114 &4807216036255681921
 MonoBehaviour:
   m_ObjectHideFlags: 0
