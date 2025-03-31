@@ -541,7 +541,10 @@ public class MirrorScript : MonoBehaviour
             }
             else if (this.gameObject.CompareTag("LDRUMirror"))
             {
-                if(((thisPos.x > otherPos.x) && (thisPos.y > otherPos.y)) || ((thisPos.x <= otherPos.x) && (thisPos.y <= otherPos.y)))
+                // 鏡のx切片を求める
+                float x_section = thisPos.y - thisPos.x;
+                // 鏡のx切片よりプレイヤーのx切片の方が小さければ(右下判定)
+                if(x_section > otherPos.y - otherPos.x)
                 {
                     // 右下から衝突した場合
                     other.transform.position = new Vector3(thisPos.x - 0.1f, thisPos.y + 0.1f);
@@ -549,7 +552,7 @@ public class MirrorScript : MonoBehaviour
                 else
                 {
                     // 左上から衝突した場合
-                    other.transform.position = new Vector3(otherPos.x + (mirrorWidth + otherWidth), otherPos.y - (mirrorHeight + otherHeight), otherPos.z);
+                    other.transform.position = new Vector3(thisPos.x + 0.1f, thisPos.y - 0.1f);
                 }
 
                 // 世界の反転
@@ -564,6 +567,20 @@ public class MirrorScript : MonoBehaviour
             }
             else if (this.gameObject.CompareTag("LURDMirror"))
             {
+                // 鏡のx切片を求める
+                float x_section = thisPos.y + thisPos.x;
+                // 鏡のx切片よりプレイヤーのx切片の方が小さければ(左下判定)
+                if (x_section > otherPos.y + otherPos.x)
+                {
+                    // 左下から衝突した場合
+                    other.transform.position = new Vector3(thisPos.x + 0.1f, thisPos.y + 0.1f);
+                }
+                else
+                {
+                    // 右上から衝突した場合
+                    other.transform.position = new Vector3(thisPos.x - 0.1f, thisPos.y - 0.1f);
+                }
+
                 // 世界の反転
                 if (GameManager.worldState == 0)
                 {
