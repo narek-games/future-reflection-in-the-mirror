@@ -241,7 +241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163290610283010958, guid: 2d41a1c07ca6e8b4c99584c9845bc2be, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1534,7 +1534,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1883294818785472854, guid: f040f03d5c897ce44a6b3c785dd89a00, type: 3}
       propertyPath: m_text
-      value: for my future
+      value: start
       objectReference: {fileID: 0}
     - target: {fileID: 1883294818785472854, guid: f040f03d5c897ce44a6b3c785dd89a00, type: 3}
       propertyPath: m_fontSize
@@ -2947,7 +2947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163290610283010958, guid: 2d41a1c07ca6e8b4c99584c9845bc2be, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

@@ -1845,7 +1845,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1883294818785472854, guid: f040f03d5c897ce44a6b3c785dd89a00, type: 3}
       propertyPath: m_text
-      value: for my future
+      value: start
       objectReference: {fileID: 0}
     - target: {fileID: 1883294818785472854, guid: f040f03d5c897ce44a6b3c785dd89a00, type: 3}
       propertyPath: m_fontSize

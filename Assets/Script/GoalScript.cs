@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GoalScript : MonoBehaviour
 {
     SpriteRenderer goalSpriteRenderer;
+    GameManager gameManager;
 
     // ゴールの画像2種類を格納する変数
     public Sprite goal;
@@ -37,6 +38,8 @@ public class GoalScript : MonoBehaviour
         {
             // 次のステージに切り替える
             SceneManager.LoadScene(stageName);
+            // phase初期化
+            gameManager.phase = 0;
         }
     }
 }

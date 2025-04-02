@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class RetryScript : MonoBehaviour
 {
+    GameManager gameManager;
+
     // ボタン背景の初期色を保存する変数
     Color firstColor;
     // ボタン背景の初期色の補色を保存する変数
@@ -38,6 +40,7 @@ public class RetryScript : MonoBehaviour
         // 現在のシーンの再読み込み
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GameManager.worldState = stageStartWorld;
+        gameManager.phase = 0;
     }
 
     private void Update()
