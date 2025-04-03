@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public static int worldState = 0;
 
     // 現在のフェーズが鏡設置フェーズ->0か、移動フェーズ->1かを判断するための変数
-    public int phase = 0;
+    public static int phase = 0;
 
     void Update()
     {

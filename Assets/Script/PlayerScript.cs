@@ -23,7 +23,7 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
-        if(gameManager.phase == 0)
+        if(GameManager.phase == 0)
         {
             // 世界の状態によって見た目変更
             if (GameManager.worldState == 0)
@@ -35,7 +35,7 @@ public class PlayerScript : MonoBehaviour
                 playerSpriteRenderer.sprite = front_nega;
             }
         }
-        else if(gameManager.phase == 1)
+        else if(GameManager.phase == 1)
         {
             // 左に移動
             if (Input.GetKey(KeyCode.LeftArrow))

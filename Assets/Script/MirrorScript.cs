@@ -55,7 +55,7 @@ public class MirrorScript : MonoBehaviour
 
     public void OnTotched()
     {
-        if(gameManager.phase == 0)
+        if(GameManager.phase == 0)
         {
             //鏡が未起動 && 対応するカウンターのmaxMirrorが1以上
             if (mirrorState == 0 && GameObject.FindGameObjectWithTag(thisCounterTag).GetComponent<MirrorCounterScript>().maxMirror > 0)
@@ -492,12 +492,12 @@ public class MirrorScript : MonoBehaviour
                     if (thisPos.x < otherPos.x)
                     {
                         // 右から衝突した場合
-                        other.transform.position = new Vector3(otherPos.x - (mirrorWidth + otherWidth), otherPos.y, otherPos.z);
+                        other.transform.position = new Vector3(thisPos.x - 0.15f, otherPos.y, otherPos.z);
                     }
                     else
                     {
                         // 左から衝突した場合
-                        other.transform.position = new Vector3(otherPos.x + (mirrorWidth + otherWidth), otherPos.y, otherPos.z);
+                        other.transform.position = new Vector3(thisPos.x + 0.15f, otherPos.y, otherPos.z);
                     }
 
                     // 世界の反転
@@ -520,12 +520,12 @@ public class MirrorScript : MonoBehaviour
                     if (thisPos.y < otherPos.y)
                     {
                         // 上から衝突した場合
-                        other.transform.position = new Vector3(otherPos.x, otherPos.y - (mirrorHeight + otherHeight), otherPos.z);
+                        other.transform.position = new Vector3(otherPos.x, thisPos.y - 0.15f, otherPos.z);
                     }
                     else
                     {
                         // 下から衝突した場合
-                        other.transform.position = new Vector3(otherPos.x, otherPos.y + (mirrorHeight + otherHeight), otherPos.z);
+                        other.transform.position = new Vector3(otherPos.x, thisPos.y + 0.15f, otherPos.z);
                     }
 
                     // 世界の反転

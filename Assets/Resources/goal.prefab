@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1314923570169941335, guid: 6e8d8197a6d75c348b096c3c6e8ff8a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goal: {fileID: -1314923570169941335, guid: 6e8d8197a6d75c348b096c3c6e8ff8a0, type: 3}
   goal_nega: {fileID: 6085517903864544398, guid: 093a885e6c6154b429166823f7263f44, type: 3}
-  scenenNum: 0
+  nextSceneNum: 0
 --- !u!60 &9023379272649962716
 PolygonCollider2D:
   m_ObjectHideFlags: 0

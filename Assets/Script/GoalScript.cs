@@ -39,7 +39,7 @@ public class GoalScript : MonoBehaviour
             // 次のステージに切り替える
             SceneManager.LoadScene(stageName);
             // phase初期化
-            gameManager.phase = 0;
+            GameManager.phase = 0;
         }
     }
 }

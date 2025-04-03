@@ -34,7 +34,7 @@ public class ForTheFutureScript : MonoBehaviour
     public void OnPushedButton()
     {
         // 移動フェーズに移行
-        gameManager.phase = 1;
+        GameManager.phase = 1;
     }
 
     private void Update()
@@ -51,7 +51,7 @@ public class ForTheFutureScript : MonoBehaviour
         }
 
         // 一度押したら消える(移動フェーズからは不可逆)
-        if (gameManager.phase == 1)
+        if (GameManager.phase == 1)
         {
             this.gameObject.SetActive(false);
         }

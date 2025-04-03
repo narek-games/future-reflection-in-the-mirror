@@ -40,7 +40,7 @@ public class RetryScript : MonoBehaviour
         // 現在のシーンの再読み込み
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GameManager.worldState = stageStartWorld;
-        gameManager.phase = 0;
+        GameManager.phase = 0;
     }
 
     private void Update()

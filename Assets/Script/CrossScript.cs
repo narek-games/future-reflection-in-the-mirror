@@ -41,7 +41,7 @@ public class crossScript : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             GameManager.worldState = stageStartWorld;
             // phase初期化
-            gameManager.phase = 0;
+            GameManager.phase = 0;
         }
     }
 }
