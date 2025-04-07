@@ -492,12 +492,12 @@ public class MirrorScript : MonoBehaviour
                     if (thisPos.x < otherPos.x)
                     {
                         // 右から衝突した場合
-                        other.transform.position = new Vector3(thisPos.x - 0.15f, otherPos.y, otherPos.z);
+                        other.transform.position = new Vector3(thisPos.x - 0.2f, otherPos.y, otherPos.z);
                     }
                     else
                     {
                         // 左から衝突した場合
-                        other.transform.position = new Vector3(thisPos.x + 0.15f, otherPos.y, otherPos.z);
+                        other.transform.position = new Vector3(thisPos.x + 0.2f, otherPos.y, otherPos.z);
                     }
 
                     // 世界の反転
@@ -520,12 +520,12 @@ public class MirrorScript : MonoBehaviour
                     if (thisPos.y < otherPos.y)
                     {
                         // 上から衝突した場合
-                        other.transform.position = new Vector3(otherPos.x, thisPos.y - 0.15f, otherPos.z);
+                        other.transform.position = new Vector3(otherPos.x, thisPos.y - 0.2f, otherPos.z);
                     }
                     else
                     {
                         // 下から衝突した場合
-                        other.transform.position = new Vector3(otherPos.x, thisPos.y + 0.15f, otherPos.z);
+                        other.transform.position = new Vector3(otherPos.x, thisPos.y + 0.2f, otherPos.z);
                     }
 
                     // 世界の反転
