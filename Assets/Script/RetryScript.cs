@@ -36,7 +36,9 @@ public class RetryScript : MonoBehaviour
         complementaryTextColor = new Color(Mathf.Abs(firstTextColor.r - 1.0f), Mathf.Abs(firstTextColor.g - 1.0f), Mathf.Abs(firstTextColor.b - 1.0f));
     }
     public void OnPushedButton()
-    {  
+    {
+        // アイテム保持一時的保存変数を初期化
+        GameManager.holdRanunculus = false;
         // 現在のシーンの再読み込み
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GameManager.worldState = stageStartWorld;

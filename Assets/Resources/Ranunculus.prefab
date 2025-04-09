@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8528874202619796724
+--- !u!1 &7171547680049463005
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6406438905050426552}
-  - component: {fileID: 6423561966919362239}
-  - component: {fileID: 6300782762843797232}
-  - component: {fileID: 4899145287105728944}
+  - component: {fileID: 4745266776212501849}
+  - component: {fileID: 29635483322070678}
+  - component: {fileID: 4463230045196820430}
+  - component: {fileID: 8694044112142657162}
   m_Layer: 0
-  m_Name: ReflectionPlayerGoal
-  m_TagString: Objects
+  m_Name: Ranunculus
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6406438905050426552
+--- !u!4 &4745266776212501849
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8528874202619796724}
+  m_GameObject: {fileID: 7171547680049463005}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8, y: 1, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: 1, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6423561966919362239
+--- !u!212 &29635483322070678
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8528874202619796724}
+  m_GameObject: {fileID: 7171547680049463005}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -77,25 +77,25 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: -871054394651567617, guid: 8562f6188b6ea534d89c69281239fcbe, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -1883898375709778475, guid: 5b46c8bc42b239549839d7992d3cad33, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.22, y: 2.11}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &6300782762843797232
+--- !u!60 &4463230045196820430
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8528874202619796724}
+  m_GameObject: {fileID: 7171547680049463005}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -127,47 +127,53 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.82, y: 2.01}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 2.22, y: 2.11}
+    newSize: {x: 2.22, y: 2.11}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.81, y: -0.52}
-      - {x: 0.81, y: 0.51}
-      - {x: 0.79999995, y: 0.52}
-      - {x: 0.74, y: 0.61}
-      - {x: 0.61, y: 0.72999996}
-      - {x: 0.35, y: 1.01}
-      - {x: -0.31, y: 1.01}
-      - {x: -0.32, y: 1}
-      - {x: -0.56, y: 0.83}
-      - {x: -0.74, y: 0.65999997}
-      - {x: -0.81, y: 0.52}
-      - {x: -0.81, y: -0.52}
-      - {x: -0.72999996, y: -0.62}
-      - {x: -0.44, y: -0.90999997}
-      - {x: -0.34, y: -0.95}
-      - {x: -0.32, y: -1.01}
-      - {x: 0.31, y: -1.01}
-      - {x: 0.32, y: -1}
-      - {x: 0.41, y: -0.94}
-      - {x: 0.72999996, y: -0.64}
+    - - {x: 0.82, y: -0.585}
+      - {x: 1.11, y: -0.295}
+      - {x: 1.11, y: 0.45499998}
+      - {x: 1.1, y: 0.465}
+      - {x: 1.04, y: 0.555}
+      - {x: 0.84, y: 0.755}
+      - {x: 0.61, y: 0.965}
+      - {x: 0.32999998, y: 1.055}
+      - {x: -0.22, y: 1.055}
+      - {x: -0.24, y: 0.97499996}
+      - {x: -0.51, y: 0.98499995}
+      - {x: -0.55, y: 0.895}
+      - {x: -0.74, y: 0.85499996}
+      - {x: -1.11, y: 0.48499998}
+      - {x: -1.11, y: -0.074999996}
+      - {x: -1.03, y: -0.095}
+      - {x: -1.04, y: -0.36499998}
+      - {x: -0.84, y: -0.585}
+      - {x: -0.71, y: -0.685}
+      - {x: -0.29999998, y: -0.875}
+      - {x: -0.12, y: -0.875}
+      - {x: -0.12, y: -1.055}
+      - {x: 0.12, y: -1.055}
+      - {x: 0.32, y: -0.85499996}
+      - {x: 0.51, y: -0.79499996}
+      - {x: 0.7, y: -0.675}
   m_UseDelaunayMesh: 0
---- !u!114 &4899145287105728944
+--- !u!114 &8694044112142657162
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8528874202619796724}
+  m_GameObject: {fileID: 7171547680049463005}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f67861380e32f274db1fa8aee24107b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 5173d87a14dd02c4fb62aad6aa7727fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 4388492758351498151, guid: b09182bfa6bc7d3448e79fb59c91fc39, type: 3}
-  goal: {fileID: -871054394651567617, guid: 8562f6188b6ea534d89c69281239fcbe, type: 3}
-  goal_nega: {fileID: 8265333006708780974, guid: ae4af979c054fba499523b1e163e423b, type: 3}
+  ranunculus: {fileID: -1883898375709778475, guid: 5b46c8bc42b239549839d7992d3cad33, type: 3}
+  ranunculus_nega: {fileID: -3889727522715942888, guid: b60a21f3585238b48b9c6e2f93446c92, type: 3}

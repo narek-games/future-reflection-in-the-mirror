@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fbe186ca9479784bbd06ea78c28e7fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 4388492758351498151, guid: b09182bfa6bc7d3448e79fb59c91fc39, type: 3}
   goal: {fileID: -1314923570169941335, guid: 6e8d8197a6d75c348b096c3c6e8ff8a0, type: 3}
   goal_nega: {fileID: 6085517903864544398, guid: 093a885e6c6154b429166823f7263f44, type: 3}
   nextSceneNum: 0

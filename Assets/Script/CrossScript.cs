@@ -37,6 +37,8 @@ public class crossScript : MonoBehaviour
         // タグが"Player"のオブジェクトと衝突したとき
         if (other.CompareTag("Player"))
         {
+            // アイテム保持一時的保存変数を初期化
+            GameManager.holdRanunculus = false;
             // 現在のシーンの再読み込み
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             GameManager.worldState = stageStartWorld;

@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c65fcb3e9187e45bed4b9f684d3333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 4388492758351498151, guid: b09182bfa6bc7d3448e79fb59c91fc39, type: 3}
   cross: {fileID: 5839820706974066888, guid: 6d61911aff790314795157a55ba8cd5c, type: 3}
   cross_nega: {fileID: 8995194412693662726, guid: c5d0d0df1f95d234e946545cfb45bd0f, type: 3}
   stageStartWorld: 0
