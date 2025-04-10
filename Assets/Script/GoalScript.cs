@@ -55,6 +55,9 @@ public class GoalScript : MonoBehaviour
                 GameManager.gotRanunculus[currentSceneNum - 1] = true;
             }
 
+            // 次のステージをStageSelectで解放する
+            GameManager.unlookedStage[currentSceneNum] = true;
+
             // アイテム保持一時的保存変数を初期化
             GameManager.holdRanunculus = false;
             // 次のステージに切り替える

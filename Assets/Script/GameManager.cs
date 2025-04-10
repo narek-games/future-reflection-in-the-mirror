@@ -8,12 +8,6 @@ public class GameManager : MonoBehaviour
     // 現在のステージ数を検索するために必要な配列(ステージを作った数だけここに追加)(0は配列番号と合わせるため)
     public static int[] stageNumArray = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
 
-    // 現在のステージ数を入れる変数
-    public int stageNum;
-
-    // ステージ数を表示するText型の変数
-    public TextMeshProUGUI stageNumText;
-
     // 世界が通常->0か、反転->1かを判断するための変数
     public static int worldState = 0;
 
@@ -26,18 +20,12 @@ public class GameManager : MonoBehaviour
     // アイテム取得状況配列(1～20ステージ分)
     public static bool[] gotRanunculus = new bool[] { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
 
+    // 挑戦可能ステージ配列(1～20ステージ分)
+    public static bool[] unlookedStage = new bool[] { true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+
     void Update()
     {
-        string sceneName = SceneManager.GetActiveScene().name;
-        for(int i = 0; i < stageNumArray.Length; i++)
-        {
-            if(sceneName.Equals("Stage" + stageNumArray[i]))
-            {
-                stageNum = i;
-            }
-        }
 
-        stageNumText.text = "stage " + stageNum.ToString();
     }
 
     //関数---------------------------------------
