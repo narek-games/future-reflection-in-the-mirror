@@ -10,6 +10,9 @@ public class Stage20Script : MonoBehaviour
     public Sprite goal;
     public Sprite goal_nega;
 
+    // EDのルート分岐に使用する変数(0->TrueEnd, 1->NormalEnd)
+    int EDflag = 0;
+
     void Start()
     {
         // ステージ開始時の世界を0で固定
@@ -44,8 +47,28 @@ public class Stage20Script : MonoBehaviour
 
             // アイテム保持一時的保存変数を初期化
             GameManager.holdRanunculus = false;
-            // エンディングに遷移
-            SceneManager.LoadScene("stage20");
+
+            // EDflagの初期化
+            EDflag = 0;
+            // アイテム保持状況に応じて分岐、エンディングに遷移
+            for (int i = 0; i < GameManager.gotRanunculus.Length; i++)
+            {
+                // 1つでもアイテムを逃していればNormalEndに遷移
+                if (GameManager.gotRanunculus[i] == false)
+                {
+                    EDflag = 1;
+                }
+            }
+
+            if(EDflag == 0)
+            {
+                SceneManager.LoadScene("TrueEnd");
+            }
+            else if(EDflag == 1)
+            {
+                SceneManager.LoadScene("NormalEnd");
+            }
+
             // phase初期化
             GameManager.phase = 0;
         }
