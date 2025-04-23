@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Ranunculus_0: -1883898375709778475
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
