@@ -18,6 +18,12 @@ public class MirrorScript : MonoBehaviour
     // 自身に対応するタグを保存する変数
     string thisCounterTag;
 
+    // SEを流すときに使う
+    AudioSource audioSource;
+
+    // 世界反転時に流すSEを格納する変数
+    public AudioClip mirrorSE;
+
     // 反転生成用のプレハブを取得
     GameObject PreVWall;
     GameObject PreHWall;
@@ -51,6 +57,9 @@ public class MirrorScript : MonoBehaviour
 
         PreVWall = (GameObject)Resources.Load("VerticalWall");
         PreHWall = (GameObject)Resources.Load("HorizonWall");
+
+        //SEのComponentを取得
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void OnTotched()
@@ -591,6 +600,9 @@ public class MirrorScript : MonoBehaviour
                     GameManager.worldState = 0;
                 }
             }
+
+            // SEを流す
+            audioSource.PlayOneShot(mirrorSE);
         }
     }
 
