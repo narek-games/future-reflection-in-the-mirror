@@ -10,6 +10,9 @@ public class RanunculusScript : MonoBehaviour
     public Sprite ranunculus;
     public Sprite ranunculus_nega;
 
+    // ラナンキュラス取得時に流すSEを格納する変数
+    public AudioClip ranunculusSE;
+
     void Start()
     {
         ranunculusSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -32,6 +35,9 @@ public class RanunculusScript : MonoBehaviour
         // タグが"Player"のオブジェクトと衝突したとき
         if (other.CompareTag("Player"))
         {
+            // SEを流す
+            GameObject.FindObjectOfType<AudioSource>().PlayOneShot(ranunculusSE);
+
             // アイテムを保持したことを一時的に保存
             GameManager.holdRanunculus = true;
 

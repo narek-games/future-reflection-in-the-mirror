@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class ForTheFutureScript : MonoBehaviour
 {
-    public GameManager gameManager;
-
     // ボタン背景の初期色を保存する変数
     Color firstColor;
     // ボタン背景の初期色の補色を保存する変数

@@ -157,6 +157,7 @@ MonoBehaviour:
   mirrorState: 0
   gameManager: {fileID: 4388492758351498151, guid: b09182bfa6bc7d3448e79fb59c91fc39, type: 3}
   mirrorSE: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
+  mirrorTotchSE: {fileID: 8300000, guid: 79180f511d89441b9aa23ccae1992fe0, type: 3}
 --- !u!114 &4807216036255681921
 MonoBehaviour:
   m_ObjectHideFlags: 0

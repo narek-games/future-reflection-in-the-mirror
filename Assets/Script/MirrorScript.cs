@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem.XR.Haptics;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class MirrorScript : MonoBehaviour
 {
@@ -20,9 +21,11 @@ public class MirrorScript : MonoBehaviour
 
     // SEを流すときに使う
     AudioSource audioSource;
-
+    
     // 世界反転時に流すSEを格納する変数
     public AudioClip mirrorSE;
+    // 鏡起動時に流すSEを格納する変数
+    public AudioClip mirrorTotchSE;
 
     // 反転生成用のプレハブを取得
     GameObject PreVWall;
@@ -58,7 +61,7 @@ public class MirrorScript : MonoBehaviour
         PreVWall = (GameObject)Resources.Load("VerticalWall");
         PreHWall = (GameObject)Resources.Load("HorizonWall");
 
-        //SEのComponentを取得
+        // SEのComponentを取得
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -71,6 +74,9 @@ public class MirrorScript : MonoBehaviour
             {
                 // 未起動->起動
                 mirrorState = 1;
+
+                // SEを流す
+                GameObject.FindObjectOfType<AudioSource>().PlayOneShot(mirrorTotchSE);
 
                 // 自身の鏡の向きと対応するカウンターの数を変更
                 GameObject.FindGameObjectWithTag(thisCounterTag).GetComponent<MirrorCounterScript>().maxMirror--;
@@ -367,8 +373,6 @@ public class MirrorScript : MonoBehaviour
                         }
                     }
 
-                    //↑ここまで(生成元の抽出)完了
-
                     // 反転生成元リストを1つずつ取り出し、それぞれ対称の座標を計算して生成、反転生成後リストに追加
                     foreach (GameObject generateWall in generateBaseWalls)
                     {
@@ -513,10 +517,14 @@ public class MirrorScript : MonoBehaviour
                     if (GameManager.worldState == 0)
                     {
                         GameManager.worldState = 1;
+                        // SEを流す
+                        audioSource.PlayOneShot(mirrorSE);
                     }
                     else if (GameManager.worldState == 1)
                     {
                         GameManager.worldState = 0;
+                        // SEを流す
+                        audioSource.PlayOneShot(mirrorSE);
                     }
                 }
                 
@@ -541,10 +549,14 @@ public class MirrorScript : MonoBehaviour
                     if (GameManager.worldState == 0)
                     {
                         GameManager.worldState = 1;
+                        // SEを流す
+                        audioSource.PlayOneShot(mirrorSE);
                     }
                     else if (GameManager.worldState == 1)
                     {
                         GameManager.worldState = 0;
+                        // SEを流す
+                        audioSource.PlayOneShot(mirrorSE);
                     }
                 }
             }
@@ -568,10 +580,14 @@ public class MirrorScript : MonoBehaviour
                 if (GameManager.worldState == 0)
                 {
                     GameManager.worldState = 1;
+                    // SEを流す
+                    audioSource.PlayOneShot(mirrorSE);
                 }
                 else if (GameManager.worldState == 1)
                 {
                     GameManager.worldState = 0;
+                    // SEを流す
+                    audioSource.PlayOneShot(mirrorSE);
                 }
             }
             else if (this.gameObject.CompareTag("LURDMirror"))
@@ -594,15 +610,16 @@ public class MirrorScript : MonoBehaviour
                 if (GameManager.worldState == 0)
                 {
                     GameManager.worldState = 1;
+                    // SEを流す
+                    audioSource.PlayOneShot(mirrorSE);
                 }
                 else if (GameManager.worldState == 1)
                 {
                     GameManager.worldState = 0;
+                    // SEを流す
+                    audioSource.PlayOneShot(mirrorSE);
                 }
             }
-
-            // SEを流す
-            audioSource.PlayOneShot(mirrorSE);
         }
     }
 
