@@ -30,12 +30,15 @@ public class BackToStageselectScript : MonoBehaviour
 
     public void OnPushedButton()
     {
-        // アイテム保持一時的保存変数を初期化
-        GameManager.holdRanunculus = false;
-        // ステージセレクトへ戻る
-        SceneManager.LoadScene("StageSelect");
-        GameManager.worldState = 0;
-        GameManager.phase = 0;
+        if(GameManager.phase != 2)
+        {
+            // アイテム保持一時的保存変数を初期化
+            GameManager.holdRanunculus = false;
+            // ステージセレクトへ戻る
+            SceneManager.LoadScene("StageSelect");
+            GameManager.worldState = 0;
+            GameManager.phase = 0;
+        }       
     }
 
     void Update()

@@ -37,12 +37,15 @@ public class RetryScript : MonoBehaviour
     }
     public void OnPushedButton()
     {
-        // アイテム保持一時的保存変数を初期化
-        GameManager.holdRanunculus = false;
-        // 現在のシーンの再読み込み
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        GameManager.worldState = stageStartWorld;
-        GameManager.phase = 0;
+        if(GameManager.phase != 2)
+        {
+            // アイテム保持一時的保存変数を初期化
+            GameManager.holdRanunculus = false;
+            // 現在のシーンの再読み込み
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameManager.worldState = stageStartWorld;
+            GameManager.phase = 0;
+        }        
     }
 
     private void Update()

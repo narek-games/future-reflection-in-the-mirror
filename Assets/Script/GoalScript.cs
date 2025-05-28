@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 public class GoalScript : MonoBehaviour
 {
@@ -14,6 +17,8 @@ public class GoalScript : MonoBehaviour
     public int nextSceneNum = 0;
     // 現在のステージを入れる
     private int currentSceneNum = 0;
+
+    string stageName;
 
     private void Start()
     {
@@ -44,7 +49,7 @@ public class GoalScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        string stageName = "stage" + nextSceneNum;
+        stageName = "stage" + nextSceneNum;
         // タグが"Player"のオブジェクトと衝突したとき
         if (other.CompareTag("Player"))
         {
@@ -60,10 +65,24 @@ public class GoalScript : MonoBehaviour
 
             // アイテム保持一時的保存変数を初期化
             GameManager.holdRanunculus = false;
-            // 次のステージに切り替える
-            SceneManager.LoadScene(stageName);
-            // phase初期化
-            GameManager.phase = 0;
+
+            // 操作不能phaseへ
+            GameManager.phase = 2;
+
+            // コルーチンで指定秒操作不能
+            StartCoroutine("StageTransition");
+
+            
         }
+    }
+
+    IEnumerator StageTransition()
+    {
+        //3秒停止
+        yield return new WaitForSeconds(3);
+        // 次のステージに切り替える
+        SceneManager.LoadScene(stageName);
+        // phase初期化
+        GameManager.phase = 0;
     }
 }

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     // 世界が通常->0か、反転->1かを判断するための変数
     public static int worldState = 0;
 
-    // 現在のフェーズが鏡設置フェーズ->0か、移動フェーズ->1かを判断するための変数
+    // 現在のフェーズが鏡設置フェーズ->0か、移動フェーズ->1か、操作不能フェーズ->2かを判断するための変数
     public static int phase = 0;
 
     // アイテムを取得したことを一時的に保存する変数

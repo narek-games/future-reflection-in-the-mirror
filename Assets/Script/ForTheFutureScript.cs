@@ -31,8 +31,11 @@ public class ForTheFutureScript : MonoBehaviour
 
     public void OnPushedButton()
     {
-        // 移動フェーズに移行
-        GameManager.phase = 1;
+        if(GameManager.phase != 2)
+        {
+            // 移動フェーズに移行
+            GameManager.phase = 1;
+        }       
     }
 
     private void Update()
