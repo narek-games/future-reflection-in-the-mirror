@@ -124,6 +124,8 @@ public class GoalScript : MonoBehaviour
         float fadeDuration = 1.0f;
         float currentFadeTime = 0.0f;
 
+        
+
         while (currentFadeTime < fadeDuration)
         {
             // 現在のAlpha値を計算
