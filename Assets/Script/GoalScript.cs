@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+using TMPro;
 
 public class GoalScript : MonoBehaviour
 {
@@ -17,8 +17,24 @@ public class GoalScript : MonoBehaviour
     public int nextSceneNum = 0;
     // 現在のステージを入れる
     private int currentSceneNum = 0;
-
+    
     string stageName;
+
+    // 以下クリア文字表示に関する変数
+    // クリア文字背景オブジェクトのSpriteRendererを格納する変数
+    SpriteRenderer clearTextBackSpriteRenderer;
+    // 初期色(黒)を保存する変数
+    Color clearTextBackFirstColor;
+    // 初期色の補色(白)を保存する変数
+    Color clearTextBackComColor;
+
+    // クリア文字を格納する変数
+    TextMeshProUGUI clearText;
+    // 初期色(白)を保存する変数
+    Color clearTextFirstColor;
+    // 初期色の補色(黒)を保存する変数
+    Color clearTextComColor;
+
 
     private void Start()
     {
@@ -33,6 +49,21 @@ public class GoalScript : MonoBehaviour
                 currentSceneNum = i;
             }
         }
+
+        // クリア文字背景オブジェクトを取得し変数に格納
+        clearTextBackSpriteRenderer = GameObject.FindGameObjectWithTag("ClearTextBack").GetComponent<SpriteRenderer>();
+        // 初期色を取得
+        clearTextBackFirstColor = clearTextBackSpriteRenderer.color;
+        // 初期色の補色を取得
+        clearTextBackComColor = new Color(Mathf.Abs(clearTextBackFirstColor.r - 1.0f), Mathf.Abs(clearTextBackFirstColor.g - 1.0f), Mathf.Abs(clearTextBackFirstColor.b - 1.0f));
+
+        // クリア文字を取得し変数に格納
+        clearText = GameObject.FindGameObjectWithTag("ClearText").GetComponent<TextMeshProUGUI>();
+        // 初期色を取得
+        clearTextFirstColor = clearText.color;
+        // 初期色の補色を取得
+        clearTextComColor = new Color(Mathf.Abs(clearTextFirstColor.r - 1.0f), Mathf.Abs(clearTextFirstColor.g - 1.0f), Mathf.Abs(clearTextFirstColor.b - 1.0f));
+
     }
 
     private void Update()
@@ -72,7 +103,9 @@ public class GoalScript : MonoBehaviour
             // コルーチンで指定秒操作不能
             StartCoroutine("StageTransition");
 
-            
+            // クリア演出フェードインスタート
+            StartCoroutine("FadeInClearTextBack");
+            StartCoroutine("FadeInClearText");
         }
     }
 
@@ -84,5 +117,113 @@ public class GoalScript : MonoBehaviour
         SceneManager.LoadScene(stageName);
         // phase初期化
         GameManager.phase = 0;
+    }
+
+    IEnumerator FadeInClearText()
+    {
+        float fadeDuration = 1.0f;
+        float currentFadeTime = 0.0f;
+
+        while (currentFadeTime < fadeDuration)
+        {
+            // 現在のAlpha値を計算
+            float alphaValue = 0 + (currentFadeTime / fadeDuration);
+            if (GameManager.worldState == 0)
+            {
+                // オブジェクトの色を更新
+                clearText.color = new Color(clearTextFirstColor.r, clearTextFirstColor.g, clearTextFirstColor.b, alphaValue);
+            }
+            else if (GameManager.worldState == 1)
+            {
+                // オブジェクトの色を更新
+                clearText.color = new Color(clearTextComColor.r, clearTextComColor.g, clearTextComColor.b, alphaValue);
+            }
+            yield return null;
+            currentFadeTime += Time.deltaTime;
+        }
+
+        //1秒停止
+        yield return new WaitForSeconds(1);
+
+        // フェードアウトコルーチンの起動
+        StartCoroutine("FadeOutClearText");
+    }
+
+    IEnumerator FadeOutClearText()
+    {
+        float fadeDuration = 1.0f;
+        float currentFadeTime = 0.0f;
+
+        while (currentFadeTime < fadeDuration)
+        {
+            // 現在のAlpha値を計算
+            float alphaValue = 1 - (currentFadeTime / fadeDuration);
+            if (GameManager.worldState == 0)
+            {
+                // オブジェクトの色を更新
+                clearText.color = new Color(clearTextFirstColor.r, clearTextFirstColor.g, clearTextFirstColor.b, alphaValue);
+            }
+            else if (GameManager.worldState == 1)
+            {
+                // オブジェクトの色を更新
+                clearText.color = new Color(clearTextComColor.r, clearTextComColor.g, clearTextComColor.b, alphaValue);
+            }
+            yield return null;
+            currentFadeTime += Time.deltaTime;
+        }
+    }
+
+    IEnumerator FadeInClearTextBack()
+    {
+        float fadeDuration = 1.0f;
+        float currentFadeTime = 0.0f;
+
+        while(currentFadeTime < fadeDuration)
+        {
+            // 現在のAlpha値を計算
+            float alphaValue = 0 + (currentFadeTime / fadeDuration);
+            if (GameManager.worldState == 0)
+            {
+                // オブジェクトの色を更新
+                clearTextBackSpriteRenderer.color = new Color(clearTextBackFirstColor.r, clearTextBackFirstColor.g, clearTextBackFirstColor.b, alphaValue);
+            }
+            else if (GameManager.worldState == 1)
+            {
+                // オブジェクトの色を更新
+                clearTextBackSpriteRenderer.color = new Color(clearTextBackComColor.r, clearTextBackComColor.g, clearTextBackComColor.b, alphaValue);
+            }
+            yield return null;
+            currentFadeTime += Time.deltaTime;
+        }
+
+        //1秒停止
+        yield return new WaitForSeconds(1);
+
+        // フェードアウトコルーチンの起動
+        StartCoroutine("FadeOutClearTextBack");
+    }
+
+    IEnumerator FadeOutClearTextBack()
+    {
+        float fadeDuration = 1.0f;
+        float currentFadeTime = 0.0f;
+
+        while (currentFadeTime < fadeDuration)
+        {
+            // 現在のAlpha値を計算
+            float alphaValue = 1 - (currentFadeTime / fadeDuration);
+            if (GameManager.worldState == 0)
+            {
+                // オブジェクトの色を更新
+                clearTextBackSpriteRenderer.color = new Color(clearTextBackFirstColor.r, clearTextBackFirstColor.g, clearTextBackFirstColor.b, alphaValue);
+            }
+            else if (GameManager.worldState == 1)
+            {
+                // オブジェクトの色を更新
+                clearTextBackSpriteRenderer.color = new Color(clearTextBackComColor.r, clearTextBackComColor.g, clearTextBackComColor.b, alphaValue);
+            }
+            yield return null;
+            currentFadeTime += Time.deltaTime;
+        }
     }
 }
