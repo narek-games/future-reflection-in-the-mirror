@@ -1,21 +1,21 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class SSFadeInScript : MonoBehaviour
 {
-    float fadeDuration = 1.0f; // “§–¾‰»‚É‚©‚©‚éŠÔi•bj
+    float fadeDuration = 1.0f; // é€æ˜åŒ–ã«ã‹ã‹ã‚‹æ™‚é–“ï¼ˆç§’ï¼‰
 
     private float currentFadeTime;
 
-    // ‰ŠúF(”’)‚ğ•Û‘¶‚·‚é•Ï”
+    // åˆæœŸè‰²(ç™½)ã‚’ä¿å­˜ã™ã‚‹å¤‰æ•°
     Color fadeInFirstColor;
-    // ‰ŠúF‚Ì•âF(•)‚ğ•Û‘¶‚·‚é•Ï”
+    // åˆæœŸè‰²ã®è£œè‰²(é»’)ã‚’ä¿å­˜ã™ã‚‹å¤‰æ•°
     Color fadeInComColor;
 
     void Start()
     {
-        // ‰ŠúF‚ğæ“¾
+        // åˆæœŸè‰²ã‚’å–å¾—
         fadeInFirstColor = gameObject.GetComponent<SpriteRenderer>().color;
-        // ‰ŠúF‚Ì•âF‚ğæ“¾
+        // åˆæœŸè‰²ã®è£œè‰²ã‚’å–å¾—
         fadeInComColor = new Color(Mathf.Abs(fadeInFirstColor.r - 1.0f), Mathf.Abs(fadeInFirstColor.g - 1.0f), Mathf.Abs(fadeInFirstColor.b - 1.0f));
     }
 
@@ -23,19 +23,19 @@ public class SSFadeInScript : MonoBehaviour
     {
         if (currentFadeTime < fadeDuration)
         {
-            // Œ»İ‚ÌAlpha’l‚ğŒvZ
+            // ç¾åœ¨ã®Alphaå€¤ã‚’è¨ˆç®—
             float alphaValue = 1 - (currentFadeTime / fadeDuration);
             if(GameManager.worldState == 0)
             {
-                // ƒIƒuƒWƒFƒNƒg‚ÌF‚ğXV
+                // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è‰²ã‚’æ›´æ–°
                 this.GetComponent<SpriteRenderer>().color = new Color(fadeInFirstColor.r, fadeInFirstColor.g, fadeInFirstColor.b, alphaValue);
             }
             else if(GameManager.worldState == 1)
             {
-                // ƒIƒuƒWƒFƒNƒg‚ÌF‚ğXV
+                // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è‰²ã‚’æ›´æ–°
                 this.GetComponent<SpriteRenderer>().color = new Color(fadeInComColor.r, fadeInComColor.g, fadeInComColor.b, alphaValue);
             }
-            // ŠÔ‚ğXV
+            // æ™‚é–“ã‚’æ›´æ–°
             currentFadeTime += Time.deltaTime;
         }
     }

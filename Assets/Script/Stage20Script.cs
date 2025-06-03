@@ -71,6 +71,8 @@ public class Stage20Script : MonoBehaviour
 
             // phase初期化
             GameManager.phase = 0;
+            // 世界初期化
+            GameManager.worldState = 0;
         }
     }
 }

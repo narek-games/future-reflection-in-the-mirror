@@ -16,6 +16,7 @@ public class ForTheFutureScript : MonoBehaviour
     // ボタン文字の初期色の補色を保存する変数
     Color complementaryTextColor;
 
+
     private void Start()
     {
         // ボタン背景の初期色を取得
