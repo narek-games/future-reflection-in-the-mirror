@@ -35,6 +35,7 @@ public class BackToTitleScript : MonoBehaviour
         GameManager.holdRanunculus = false;
         // ステージセレクトへ戻る
         SceneManager.LoadScene("Title");
+        GameManager.worldState = 0;
     }
 
     // Update is called once per frame
