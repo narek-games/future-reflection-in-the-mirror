@@ -33,7 +33,6 @@ public class NormalEndScript : MonoBehaviour
     {
         if(NEPlayerTrans == true && GameManager.worldState == 0)
         {
-            Debug.Log("プレイヤー進行");
             NEPlayer.transform.Translate(0.005f, 0.0f, 0.0f);
         }
 
@@ -50,7 +49,6 @@ public class NormalEndScript : MonoBehaviour
 
     IEnumerator NormalEndEvent()
     {
-        Debug.Log("コルーチン起動");
         //2秒停止
         yield return new WaitForSeconds(2);
         NEPlayerTrans = true;
