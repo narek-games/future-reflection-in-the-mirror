@@ -1,8 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 
 public class NormalEndScript : MonoBehaviour
 {
@@ -33,7 +30,7 @@ public class NormalEndScript : MonoBehaviour
     {
         if(NEPlayerTrans == true && GameManager.worldState == 0)
         {
-            NEPlayer.transform.Translate(0.005f, 0.0f, 0.0f);
+            NEPlayer.transform.Translate(0.05f, 0.0f, 0.0f);
         }
 
         if(GameManager.worldState == 1)

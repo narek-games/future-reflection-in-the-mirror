@@ -49,7 +49,7 @@ public class PlayerScript : MonoBehaviour
                 {
                     playerSpriteRenderer.sprite = left_nega;
                 }
-                this.transform.Translate(-0.005f, 0.0f, 0.0f);
+                this.transform.Translate(-0.03f, 0.0f, 0.0f);
             }
 
             // 右に移動
@@ -64,7 +64,7 @@ public class PlayerScript : MonoBehaviour
                 {
                     playerSpriteRenderer.sprite = right_nega;
                 }
-                this.transform.Translate(0.005f, 0.0f, 0.0f);
+                this.transform.Translate(0.03f, 0.0f, 0.0f);
             }
 
             // 上に移動
@@ -79,7 +79,7 @@ public class PlayerScript : MonoBehaviour
                 {
                     playerSpriteRenderer.sprite = back_nega;
                 }
-                this.transform.Translate(0.0f, 0.005f, 0.0f);
+                this.transform.Translate(0.0f, 0.03f, 0.0f);
             }
 
             // 下に移動
@@ -94,7 +94,7 @@ public class PlayerScript : MonoBehaviour
                 {
                     playerSpriteRenderer.sprite = front_nega;
                 }
-                this.transform.Translate(0.0f, -0.005f, 0.0f);
+                this.transform.Translate(0.0f, -0.03f, 0.0f);
             }
         }
     }

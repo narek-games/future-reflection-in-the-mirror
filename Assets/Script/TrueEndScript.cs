@@ -1,8 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 
 public class TrueEndScript : MonoBehaviour
 {
@@ -20,13 +17,13 @@ public class TrueEndScript : MonoBehaviour
     bool TEPlayerTrans = false;
 
     // クリア画面表示フラグ
-    bool clear = false;
+    public bool clear = false;
 
     void Start()
     {
         TEPlayer = GameObject.Find("TrueEndPlayer");
         TRPlayer = GameObject.Find("TrueReflectionPlayer");
-        Mirror = GameObject.Find("EndMirror");
+        Mirror = GameObject.Find("TrueEndMirror");
         StartCoroutine("TrueEndEvent");
     }
 
@@ -34,12 +31,13 @@ public class TrueEndScript : MonoBehaviour
     {
         if (TEPlayerTrans == true && clear != true)
         {
-            TEPlayer.transform.Translate(0.005f, 0.0f, 0.0f);
-            TRPlayer.transform.Translate(-0.005f, 0.0f, 0.0f);
+            TEPlayer.transform.Translate(0.05f, 0.0f, 0.0f);
+            TRPlayer.transform.Translate(-0.05f, 0.0f, 0.0f);
         }
 
         if (clear == true)
         {
+            GameManager.worldState = 0;
             TEPlayer.SetActive(false);
             TRPlayer.SetActive(false);
             BackToTitleButton.SetActive(true);
@@ -55,7 +53,5 @@ public class TrueEndScript : MonoBehaviour
         //2秒停止
         yield return new WaitForSeconds(2);
         TEPlayerTrans = true;
-        yield return new WaitForSeconds(1.9f);
-        clear = true;
     }
 }

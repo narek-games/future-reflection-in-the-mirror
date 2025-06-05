@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEditor.Recorder.OutputPath;
 
 public class MoveButtonScript : MonoBehaviour
 {
@@ -80,7 +76,7 @@ public class MoveButtonScript : MonoBehaviour
                 {
                     playerSpriteRenderer.sprite = back_nega;
                 }
-                player.transform.Translate(0.0f, 0.005f, 0.0f);
+                player.transform.Translate(0.0f, 0.03f, 0.0f);
             }
             else if (mdown)
             {
@@ -93,7 +89,7 @@ public class MoveButtonScript : MonoBehaviour
                 {
                     playerSpriteRenderer.sprite = front_nega;
                 }
-                player.transform.Translate(0.0f, -0.005f, 0.0f);
+                player.transform.Translate(0.0f, -0.03f, 0.0f);
             }
             else if (mleft)
             {
@@ -106,7 +102,7 @@ public class MoveButtonScript : MonoBehaviour
                 {
                     playerSpriteRenderer.sprite = left_nega;
                 }
-                player.transform.Translate(-0.005f, 0.0f, 0.0f);
+                player.transform.Translate(-0.03f, 0.0f, 0.0f);
             }
             else if (mright)
             {
@@ -119,7 +115,7 @@ public class MoveButtonScript : MonoBehaviour
                 {
                     playerSpriteRenderer.sprite = right_nega;
                 }
-                player.transform.Translate(0.005f, 0.0f, 0.0f);
+                player.transform.Translate(0.03f, 0.0f, 0.0f);
             }
         }   
     }

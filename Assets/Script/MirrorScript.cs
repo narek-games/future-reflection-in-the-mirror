@@ -1,9 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.InputSystem.XR.Haptics;
-using UnityEngine.UI;
-using UnityEngine.Audio;
 
 public class MirrorScript : MonoBehaviour
 {
